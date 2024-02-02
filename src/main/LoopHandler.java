@@ -8,11 +8,13 @@ import java.util.Map;
 
 
 public class LoopHandler {
-    public HandlerState state;
+    public static LoopHandler instance = null;
+    private HandlerState state;
 
     public LoopHandler() {
+        instance = this;
+        changeState(new MenuHandler());
         System.out.println();
-
     }
 
     public void changeState(HandlerState state) {
@@ -22,7 +24,7 @@ public class LoopHandler {
     public void loop() {
         while (true) {
             String input = ConsoleReader.readLine().toLowerCase();
-            if (input.length() == 0) continue;
+            if (input.isEmpty()) continue;
             String command = input.split(" ")[0];
             String[] args = Arrays.copyOfRange(input.split(" "), 1, input.length());
             System.out.print("\033[2J\033[1;1H");
