@@ -1,3 +1,4 @@
+import main.Game;
 import main.LoopHandler;
 
 public class Main {

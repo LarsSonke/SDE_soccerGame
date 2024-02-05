@@ -3,6 +3,7 @@ package handlers;
 import main.LoopHandler;
 
 public class MenuHandler implements HandlerState {
+
     public MenuHandler()
     {
         menu();

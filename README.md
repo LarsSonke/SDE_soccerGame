@@ -18,28 +18,33 @@
 
 ## 1. Cooperation between team members 
 
+Thijs en Lars worked together via 'Code with me', so the work division is listed below
 
-Since we worked together with live share and coop in intellij, the github commits are not accurate in showing the contributions. Therefore we ask of you to refer to the list above of who did what.
+Base Project (Loophandler, ConsoleReader, Main, etc) - Thijs  
+Situations & Menu - Lars  
+Statistics & Menu - Lars  
+Levels - Thijs  
+Game & Menu - Lars & Thijs  
 
 ## 2. Design patterns 
 
 ### 2.1 Creational patterns
 #### 2.1.1 Singleton
-At all times you should only have one instance of a class.
+Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
 
-In our application, there should only exist one game while active, so we chose for a singleton pattern so that we can 
-always access the same game everywhere, and to make sure a game does not exist elsewhere.
+In our application, there should only exist one game and one player, so we chose for a singleton pattern so that we can 
+always access the same game and player everywhere, and to make sure the data is consistent.
 
-When we want to create a new game, we check if there is already a game. If there is, we return the existing game. 
-If there is no game, we create a new game and return that.
+When we want to use a class and its properties, we check if there is an instance of the class already present. If there is, we return the existing instance. 
+If there is no instance, we create a new instance and return that.
 
 #### 2.1.2 Builder
-Use a builder to create different kinds of a class with an interface.
+Builder is a creational design pattern that lets you construct complex objects step by step. The pattern allows you to produce different types and representations of an object using the same construction code.
 
-In our application, we can have different kinds of the game. Think about the dimensions or the chips in a row needed 
-to win. To make this easier, we used a builder.
+In our application, we can have different kinds of situations. Changing the defenders, teammates and distance from goal
+To make this easier, we used a builder.
 
-The builder is used in the GameHandler class. When a new game is created, the builder is used to create a new game.
+The builder is used in the GameSelectHandler class. When a new game is created, the builder is used to create a new situation for the game.
 
 ### 2.2 Structural patterns
 #### 2.2.1 Facade 
@@ -57,6 +62,9 @@ for reading console input, and to make it easily accessible.
 
 ### 2.3 Behavioral patterns
 #### 2.3.1 Strategy
+Strategy is a behavioral design pattern that lets you define a family of algorithms, put each of them into a separate class, and make their objects interchangeable.
+
+For calculating the chance if the strategy is successful, we use a strategy to indicate which calculation to use for the chance.
 
 #### 2.3.2 State
 Decides which state the application part is in. 

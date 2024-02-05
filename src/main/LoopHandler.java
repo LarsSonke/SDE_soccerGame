@@ -23,15 +23,22 @@ public class LoopHandler {
 
     public void loop() {
         while (true) {
+            if (state instanceof ExitHandler) return;
+
+            System.out.print("> ");
             String input = ConsoleReader.readLine().toLowerCase();
             if (input.isEmpty()) continue;
             String command = input.split(" ")[0];
             String[] args = Arrays.copyOfRange(input.split(" "), 1, input.length());
-            System.out.print("\033[2J\033[1;1H");
+            clearConsole();
 
             state.invoke(command, args);
+        }
+    }
 
-            if (state instanceof ExitHandler) return;
+    private static void clearConsole() {
+        for (int i = 0; i < 20; i++) {
+            System.out.println();
         }
     }
 }
